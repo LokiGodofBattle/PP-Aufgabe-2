@@ -1,0 +1,1 @@
+class Product (val productName : String, val price : Double, val rating : Int)
