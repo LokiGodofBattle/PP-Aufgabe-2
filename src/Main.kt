@@ -59,14 +59,14 @@ fun <T, R> map (list : customList<T> , f : (T) -> R) : customList<R>{
     var newList = customList<R>()
     var tail = list
 
-    do{
+    while (tail !is customList.Nil){
         when(tail){
             is customList.Nil -> throw IllegalStateException()
             is customList.Node<T> -> newList = newList.addFirst(f(tail.head))
         }
 
         tail = tail.removeFirst()
-    } while (tail !is customList.Nil)
+    }
 
     return newList
 }
@@ -75,14 +75,14 @@ fun <T> replaceIf (list : customList<T>, f : (T) -> T, p : (T) -> Boolean) : cus
     var newList = customList<T>()
     var tail = list
 
-    do{
+    while (tail !is customList.Nil){
         when(tail){
             is customList.Nil -> throw IllegalStateException()
             is customList.Node<T> -> if(p(tail.head))newList = newList.addFirst(f(tail.head))
         }
 
         tail = tail.removeFirst()
-    } while (tail !is customList.Nil)
+    }
 
     return newList
 }
@@ -91,14 +91,14 @@ fun <T> filter (list : customList<T>, p : (T) -> Boolean) : customList<T>{
     var newList = customList<T>()
     var tail = list
 
-    do{
+    while (tail !is customList.Nil){
         when(tail){
             is customList.Nil -> throw IllegalStateException()
             is customList.Node<T> -> if(!p(tail.head)) newList = newList.addFirst(tail.head)
         }
 
         tail = tail.removeFirst()
-    } while (tail !is customList.Nil)
+    }
 
     return newList
 }
@@ -106,14 +106,14 @@ fun <T> filter (list : customList<T>, p : (T) -> Boolean) : customList<T>{
 fun <T> any (list : customList<T>, p : (T) -> Boolean) : Boolean{
     var tail = list
 
-    do{
+    while (tail !is customList.Nil) {
         when(tail){
             is customList.Nil -> throw IllegalStateException()
             is customList.Node<T> -> if(p(tail.head)) return true
         }
 
         tail = tail.removeFirst()
-    } while (tail !is customList.Nil)
+    }
 
     return false
 }
