@@ -103,8 +103,8 @@ fun <T> filter (list : customList<T>, p : (T) -> Boolean) : customList<T>{
 
     return newList
 }
-/*
-fun <T> any (list : customList<T>, p : (T) -> Boolean) : Boolean{
+
+fun <T> anyInterativ (list : customList<T>, p : (T) -> Boolean) : Boolean{
     var tail = list
 
     while (tail !is customList.Nil) {
@@ -118,7 +118,7 @@ fun <T> any (list : customList<T>, p : (T) -> Boolean) : Boolean{
 
     return false
 }
- */
+
 
 fun <T> any (list : customList<T>, p : (T) -> Boolean) : Boolean {
     when(list){
