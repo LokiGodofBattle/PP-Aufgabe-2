@@ -14,6 +14,7 @@ fun main() {
     println(any)
 
 
+
     var productList = customList<Product>()
 
     productList = productList.addFirst(Product("Apfel", 3.99, 4))
